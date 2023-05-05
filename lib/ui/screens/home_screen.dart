@@ -1,3 +1,5 @@
+import 'package:dribble_design/ui/screens/product_detail_screen.dart';
+import 'package:dribble_design/ui/transitions/slide_opacity_transition.dart';
 import 'package:dribble_design/ui/widgets/badged_icon.dart';
 import 'package:dribble_design/ui/widgets/carousel.dart';
 import 'package:dribble_design/ui/widgets/category_item.dart';
@@ -6,25 +8,19 @@ import 'package:dribble_design/ui/widgets/indicator_dot.dart';
 import 'package:dribble_design/ui/widgets/product_tile.dart';
 import 'package:dribble_design/ui/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
-    super.key,
-  });
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   final appBarMaxHeight = 200 + 125;
+
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffFAFAFA),
       body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) =>
-            <Widget>[
+        headerSliverBuilder:
+            (BuildContext context, bool innerBoxIsScrolled) => <Widget>[
           SliverAppBar(
             elevation: 0,
             backgroundColor: Colors.white,
@@ -139,7 +135,15 @@ class _HomePageState extends State<HomePage> {
           crossAxisSpacing: 20,
           mainAxisSpacing: 30,
           children: [
-            ProductTile(showBgColor: true, isFavorite: true),
+            ProductTile(
+              showBgColor: true,
+              isFavorite: true,
+              onClick: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => ProductDetailScreen()),
+                );
+              },
+            ),
             ...List.filled(4, ProductTile()),
           ],
         ),
