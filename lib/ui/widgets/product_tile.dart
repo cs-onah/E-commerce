@@ -83,7 +83,7 @@ class ProductTile extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

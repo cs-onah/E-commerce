@@ -14,13 +14,13 @@ class _SlideOpacityTransitionState extends State<SlideOpacityTransition>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
 
-  final slideTween = Tween<Offset>(begin: Offset(0, 1.5), end: Offset.zero);
+  final slideTween = Tween<Offset>(begin: Offset(0, 0.15), end: Offset.zero);
 
   @override
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: widget.duration ?? Duration(milliseconds: 700),
+      duration: widget.duration ?? Duration(milliseconds: 600),
     );
     controller.forward();
     super.initState();
