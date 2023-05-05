@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProductTile extends StatelessWidget {
-  final bool showBgColor;
-  const ProductTile({super.key, this.showBgColor = false});
+  final bool showBgColor, isFavorite;
+  const ProductTile(
+      {super.key, this.showBgColor = false, this.isFavorite = false});
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +13,29 @@ class ProductTile extends StatelessWidget {
         children: [
           //Image
           Expanded(
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                image: DecorationImage(image: AssetImage("images/jacket.png"), fit: BoxFit.cover,)
-              ),
+            child: Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      image: DecorationImage(
+                        image: AssetImage("images/jacket.png"),
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  child: Container(
+                    color: Color(0xffF3F3F3),
+                    padding: EdgeInsets.all(8),
+                    child: Image.asset(
+                      isFavorite ? "images/favorite_on" : "images/favorite.png",
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Padding(

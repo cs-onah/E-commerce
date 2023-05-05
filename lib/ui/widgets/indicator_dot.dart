@@ -32,7 +32,7 @@ class IndicatorDot extends StatelessWidget {
       width: 4,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.grey[500],
+        color: Colors.grey[400],
       ),
     );
   }

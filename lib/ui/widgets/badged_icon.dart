@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class BadgedIcon extends StatelessWidget {
   final Widget icon;
+  final String? badgeText;
   const BadgedIcon({
-    super.key, required this.icon,
+    super.key, required this.icon, this.badgeText,
   });
 
   @override
@@ -16,15 +17,15 @@ class BadgedIcon extends StatelessWidget {
         Positioned(
           right: 0,
           child: Container(
-            height: 18,
+            height: 16,
             width: 20,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(3)),
               color: Color(0xffE65B87),
             ),
-            child: const Center(
+            child: Center(
               child: Text(
-                '1',
+                badgeText ?? '1',
                 style: TextStyle(color: Colors.white, fontSize: 12),
               ),
             ),

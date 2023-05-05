@@ -14,7 +14,11 @@ class SearchBar extends StatelessWidget {
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: searchUIColor),
+          borderSide: BorderSide(color: searchUIColor, width: 1),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide(color: searchUIColor, width: 1),
         ),
         isDense: true,
         prefixIcon: Row(
@@ -33,7 +37,7 @@ class SearchBar extends StatelessWidget {
           ],
         ),
         hintText: 'Search',
-        hintStyle: TextStyle(color: searchUIColor),
+        hintStyle: TextStyle(color: searchUIColor, fontSize: 16),
       ),
     );
   }

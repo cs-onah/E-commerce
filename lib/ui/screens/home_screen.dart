@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
               Center(
                 child: BadgedIcon(
                   icon: Icon(
-                    Icons.lock_outline_rounded,
+                    Icons.local_mall_outlined,
                     size: 30,
                     color: Colors.grey[700],
                   ),
@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(width: 20),
               Center(
                 child: BadgedIcon(
+                  badgeText: "9+",
                   icon: Icon(
                     Icons.chat_outlined,
                     size: 30,
@@ -137,7 +138,10 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.symmetric(horizontal: 26, vertical: 10),
           crossAxisSpacing: 20,
           mainAxisSpacing: 30,
-          children: List.filled(5, ProductTile()),
+          children: [
+            ProductTile(showBgColor: true, isFavorite: true),
+            ...List.filled(4, ProductTile()),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
