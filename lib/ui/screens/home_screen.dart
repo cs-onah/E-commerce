@@ -1,8 +1,12 @@
+import 'package:dribble_design/ui/widgets/badged_icon.dart';
+import 'package:dribble_design/ui/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:dribble_design/constant.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key,});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,83 +21,27 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          // Expanded(child: Container(color: Colors.red,)),
-          const SizedBox(
-            height: 60,
-          ),
+          SizedBox(height: MediaQuery.of(context).padding.top + 5),
           Container(
-            margin: EdgeInsets.only(left: 20, right: 10),
+            margin: const EdgeInsets.only(left: 20, right: 10),
             child: Row(
               children: [
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(6.0),
-                            borderSide: const BorderSide(color: Colors.grey)),
-                        prefixIcon: const Icon(
-                          Icons.search,
-                          size: 30,
-                        ),
-                        hintText: 'Search'),
-                  ),
-                ),
-                Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.camera_alt),
-                        onPressed: () {
-                          // add your code here
-                        },
-                      ),
-                      // Image.asset(padlock, height: 60, width: 20,),
-                      Positioned(
-                          left: 24,
-                          bottom: 25,
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            color: Colors.pinkAccent,
-                            child: const Center(child: Text('1', style: TextStyle(color: Colors.white),)),
-                          )
-                      )
-                    ]
-                ),
-                Stack(
-                    alignment: Alignment.topCenter,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.camera_alt),
-                        onPressed: () {
-                          // add your code here
-                        },
-                      ),
-                      // Image.asset(padlock, height: 60, width: 20,),
-                      Positioned(
-                          left: 24,
-                          bottom: 25,
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            color: Colors.pinkAccent,
-                            child: const Center(child: Text('9+', style: TextStyle(color: Colors.white),)),
-                          )
-                      )
-                    ]
-                ),
-
+                Expanded(child: SearchBar()),
+                const SizedBox(width: 20),
+                BadgedIcon(),
+                const SizedBox(width: 20),
+                BadgedIcon(),
               ],
             ),
           ),
           Expanded(
               child: Container(
-                color: Colors.blue,
-              )),
+            color: Colors.blue,
+          )),
           Expanded(
               child: Container(
-                color: Colors.yellow,
-              ))
+            color: Colors.yellow,
+          ))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
