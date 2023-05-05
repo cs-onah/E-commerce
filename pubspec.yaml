@@ -17,11 +17,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_svg: 1.0.3
 
 flutter:
   uses-material-design: true
   assets:
     - images/
+    - images/svgs/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
