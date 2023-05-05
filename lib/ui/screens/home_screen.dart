@@ -1,4 +1,5 @@
 import 'package:dribble_design/ui/widgets/badged_icon.dart';
+import 'package:dribble_design/ui/widgets/carousel.dart';
 import 'package:dribble_design/ui/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:dribble_design/constant.dart';
@@ -13,63 +14,77 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  bool isCurrentIndex = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          SizedBox(height: MediaQuery.of(context).padding.top + 5),
-          Container(
-            margin: const EdgeInsets.only(left: 20, right: 10),
-            child: Row(
-              children: [
-                Expanded(child: SearchBar()),
-                const SizedBox(width: 20),
-                BadgedIcon(),
-                const SizedBox(width: 20),
-                BadgedIcon(),
-              ],
-            ),
+          Stack(
+            children: [
+              //Carousel
+              Carousel(
+                children: [
+                  CarouselItem(
+                    child: Image.asset("images/poster1.png", fit: BoxFit.cover),
+                    themeColor: Color(0xffE8EBEA),
+                  ),
+                  CarouselItem(
+                    child: Image.asset("images/poster2.png", fit: BoxFit.cover),
+                    themeColor: Color(0xffE4DBDB),
+                  ),
+                ],
+              ),
+              Container(
+                height: 60,
+                margin: EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  top: MediaQuery.of(context).padding.top + 5,
+                ),
+                child: Row(
+                  children: [
+                    Expanded(child: SearchBar()),
+                    const SizedBox(width: 20),
+                    BadgedIcon(
+                      icon: Icon(Icons.lock_outline_rounded, size: 30, color: Colors.grey[700]),
+                    ),
+                    const SizedBox(width: 20),
+                    BadgedIcon(
+                      icon: Icon(Icons.chat_outlined, size: 30, color: Colors.grey[700]),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          Expanded(
-              child: Container(
-            color: Colors.blue,
-          )),
-          Expanded(
-              child: Container(
-            color: Colors.yellow,
-          ))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        backgroundColor: Color(0xffEFEFF1),
+        currentIndex: 0,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.black,
-        selectedLabelStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         selectedIconTheme: const IconThemeData(color: Color(0xFF4DAB95)),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_filled,
-              ),
-              label: 'Home'),
+            icon: Image.asset("images/home.png"),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage(vouchers)), label: 'Voucher'),
+            icon: Image.asset("images/voucher.png"),
+            label: 'Voucher',
+          ),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage(wallets)), label: 'Wallet'),
+            icon: Image.asset("images/wallet.png"),
+            label: 'Wallet',
+          ),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage(setting)), label: 'Settings')
+            icon: Image.asset("images/settings.png"),
+            label: 'Settings',
+          ),
         ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onTap: (_) {},
       ),
     );
   }
